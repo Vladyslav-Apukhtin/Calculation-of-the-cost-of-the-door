@@ -1,0 +1,371 @@
+extends ./../index.jade
+
+block calculator
+    include nav
+    .container-fluid.text-left    
+        .row.content
+            .col-sm-2
+            .col-sm-8.colRegForm.mainContent.contentCalculator
+                .col-sm-12
+                    .col-sm-1
+                    .col-sm-11.text-left.padLeft
+                        h3.description 
+                            p 
+                                |Обрахування вартості художнього оформлення скла
+                .col-sm-12.contentIndex.mainContent
+                    h3
+                        .col-sm-1.text-right
+                            span.group-addon.index 1
+                        .col-sm-11.text-left.padLeft
+                            span.group-addon.text ЗАДАЙТЕ РОЗМІРИ
+                .col-sm-12
+                    .col-sm-1
+                    .col-sm-11.text-left.padLeft
+                        .col-sm-5.padLeft.amountDors
+                            form.form-horizontal(id='amountDors' name='amountDors' action="/" method="post")
+                                label Введіть розмір у міліметрах
+                                    br
+                                    |1метр = 1000мм
+                                .input-group
+                                    span.input-group-addon Висота y:
+                                    input.form-control(id="height" type="number" name="height" placeholder="max 2900 мм" maxlength="4" max="2900" min="100" title="максимальна висота 2900 мм" pattern="^[0-9]+$" required)
+                                    span.input-group-addon.end мм
+                                br
+                                .input-group
+                                    span.input-group-addon Ширина x:
+                                    input.form-control(id="width" type="number" name="width" placeholder="max 5500 мм" maxlength="4" max="5500" min="100" title="максимальна ширина 5500 мм" pattern="^[0-9]+$" required)
+                                    span.input-group-addon.end мм
+                                br
+                                .input-group
+                                    span.input-group-addon Кількість дверей:
+                                    input.form-control(id="amountInputDors" type="number" name="amountInputDors" placeholder="max 6 шт" max="6" min="1" maxlength="1" pattern="^[0-9]+$" required)
+                                    span.input-group-addon.end шт
+                        .col-sm-7.text-left.imgStyle
+                            img.img-responsive(src='/images/wH.png' alt="Width and Height doors")
+                .col-sm-12.contentIndex.mainContent(style="margin-top: 30px;")
+                    h3
+                        .col-sm-1.text-right
+                            span.group-addon.index 2
+                        .col-sm-11.text-left.padLeft
+                            span.group-addon.text ОБЕРІТЬ СИСТЕМУ ДЛЯ ДВЕРОК: ТИП, КОЛІР, ФОРМА            
+                .col-sm-12
+                    .col-sm-1
+                    .col-sm-11.text-left.padLeft
+                        .col-sm-7.padLeft.chooseSystem
+                            label.col-sm-12 Оберіть тип системи
+                            .col-sm-12.text-left.typeSystem
+                                .radio
+                                    label.input-group-addon Стандарт (сталь)
+                                        input#inputTypeSystem1.first(type="radio" name="chooseSystem" checked)
+                                .radio
+                                    label.input-group-addon Економ (алюміній)
+                                        input#inputTypeSystem2(type="radio" name="chooseSystem")
+                            
+                            label.col-sm-12 Оберіть колір профілю
+                            .col-sm-12.text-center.galery
+                                .galery_item
+                                    .galery_item-image
+                                        img(src='/images/Шампань.png' alt="Шампань")
+                                    .galery_item-describe
+                                        input#inputColorSystem1(type="radio" name="colorProfile")
+                                        lable Шампань
+                                .galery_item
+                                    .galery_item-image
+                                        img(src='/images/Золото.png' alt="Золото")
+                                    .galery_item-describe
+                                        input#inputColorSystem2(type="radio" name="colorProfile" checked)
+                                        lable Золото
+                                .galery_item
+                                    .galery_item-image
+                                        img(src='/images/Срібло.png' alt="Срібло")
+                                    .galery_item-describe
+                                        input#inputColorSystem3(type="radio" name="colorProfile")
+                                        lable Срібло
+                                .galery_item
+                                    .galery_item-image
+                                        img(src='/images/Венге.png' alt="Венге")
+                                    .galery_item-describe
+                                        input#inputColorSystem4(type="radio" name="colorProfile")
+                                        lable Венге
+
+                            label.col-sm-12 Оберіть тип профілю
+                            .col-sm-12.text-center.galery
+                                .galery_item
+                                    .galery_item-image
+                                        img(src='/images/Стандартна.png' alt="Стандарт")
+                                    .galery_item-describe
+                                        input#typeProfile1(type="radio" name="typeProfile")
+                                        lable Стандарт
+                                .galery_item
+                                    .galery_item-image
+                                        img(src='/images/Широка ручка.png' alt="Широка")
+                                    .galery_item-describe
+                                        input#typeProfile2(type="radio" name="typeProfile")
+                                        lable Широка
+                                .galery_item
+                                    .galery_item-image
+                                        img(src='/images/Квадро.png' alt="Квадро")
+                                    .galery_item-describe
+                                        input#typeProfile3(type="radio" name="typeProfile" checked)
+                                        lable Квадро
+                                .galery_item
+                                    .galery_item-image
+                                        img(src='/images/Стандартна в паз.png' alt="Стандарт (паз)")
+                                    .galery_item-describe
+                                        input#typeProfile4(type="radio" name="typeProfile")
+                                        lable Стандарт (паз)
+
+                        .col-sm-5
+                .col-sm-12.contentIndex.mainContent(style="margin-top: 30px;")
+                    h3
+                        .col-sm-1.text-right
+                            span.group-addon.index 3
+                        .col-sm-11.text-left.padLeft
+                            span.group-addon.text ОБЕРІТЬ ДЕКОР СКЛА/ДЗЕРКАЛА
+                .col-sm-12
+                    .col-sm-1
+                    .col-sm-11.text-left.padLeft
+                        .col-sm-11.padLeft.chooseSystem.bigGalery
+                            label.col-sm-12 Оберіть наповнення дверок (декор скла/дзеркала)
+                            .col-sm-12.text-center.galery
+                                .galery_item.Dor1
+                                    .galery_item-describe
+                                        lable Дверка 1
+                                    .galery_item-image
+                                        img#selectImgDor1(src='/images/Матування 1.png')
+                                    .galery_item-describe
+                                        select#selectDor1
+                                            option Матування
+                                            option Фотодрук
+                                            option Дзеркало
+                                            option Лакобель
+                                .galery_item.Dor2
+                                    .galery_item-describe
+                                        lable Дверка 2
+                                    .galery_item-image
+                                        img#selectImgDor2(src='/images/Матування 1.png')
+                                    .galery_item-describe
+                                        select#selectDor2
+                                            option Матування
+                                            option Фотодрук
+                                            option Дзеркало
+                                            option Лакобель
+                                .galery_item.Dor3
+                                    .galery_item-describe
+                                        lable Дверка 3
+                                    .galery_item-image
+                                        img#selectImgDor3(src='/images/Матування 1.png')
+                                    .galery_item-describe
+                                        select#selectDor3
+                                            option Матування
+                                            option Фотодрук
+                                            option Дзеркало
+                                            option Лакобель
+                                .galery_item.Dor4
+                                    .galery_item-describe
+                                        lable Дверка 4 
+                                    .galery_item-image
+                                        img#selectImgDor4(src='/images/Матування 1.png')
+                                    .galery_item-describe
+                                        select#selectDor4
+                                            option Матування
+                                            option Фотодрук
+                                            option Дзеркало
+                                            option Лакобель
+                                .galery_item.Dor5
+                                    .galery_item-describe
+                                        lable Дверка 5 
+                                    .galery_item-image
+                                        img#selectImgDor5(src='/images/Матування 1.png')
+                                    .galery_item-describe
+                                        select#selectDor5
+                                            option Матування
+                                            option Фотодрук
+                                            option Дзеркало
+                                            option Лакобель
+                                .galery_item.Dor6
+                                    .galery_item-describe
+                                        lable Дверка 6 
+                                    .galery_item-image
+                                        img#selectImgDor6(src='/images/Матування 1.png')
+                                    .galery_item-describe
+                                        select#selectDor6
+                                            option Матування
+                                            option Фотодрук
+                                            option Дзеркало
+                                            option Лакобель
+                        .col-sm-1
+                        .gallery.col-sm-11.padLeft.chooseSystem.containerGalery
+                            label.col-sm-12 Для перегляду малюнків, натисніть на кнопку потрібного вам стилю
+                            .col-sm-12.text-center.selectFolder
+                                .col-sm-12.text-center.galery.selectFolder
+                                    .galery_item
+                                        .galery_item-describe
+                                            lable Дзеркало
+                                        .galery_item-image
+                                            button.btn.btn-default.filter-button(data-filter='mirror')
+                                                span.glyphicon.glyphicon-camera
+                                    .galery_item
+                                        .galery_item-describe
+                                            lable Фотодрук
+                                        .galery_item-image
+                                            button.btn.btn-default.filter-button(data-filter='photoprinting')
+                                                span.glyphicon.glyphicon-camera
+                                    .galery_item
+                                        .galery_item-describe
+                                            lable Матування
+                                        .galery_item-image
+                                            button.btn.btn-default.filter-button(data-filter='matting')
+                                                span.glyphicon.glyphicon-camera
+                                    .galery_item
+                                        .galery_item-describe
+                                            lable Лакобель
+                                        .galery_item-image
+                                            button.btn.btn-default.filter-button(data-filter='lakobel')
+                                                span.glyphicon.glyphicon-camera  
+                                br
+                                .gallery_product.col-lg-4.col-md-4.col-sm-4.col-xs-6.filter.mirror
+                                    img.img-responsive(src='/images/Фотки на дверки/Дзеркало 1.png')
+                                .gallery_product.col-lg-4.col-md-4.col-sm-4.col-xs-6.filter.mirror
+                                    img.img-responsive(src='/images/Фотки на дверки/Дзеркало 2.png')
+                                .gallery_product.col-lg-4.col-md-4.col-sm-4.col-xs-6.filter.mirror
+                                    img.img-responsive(src='/images/Фотки на дверки/Дзеркало 3.png')
+                                .gallery_product.col-lg-4.col-md-4.col-sm-4.col-xs-6.filter.mirror
+                                    img.img-responsive(src='/images/Фотки на дверки/Дзеркало 4.png')
+                                .gallery_product.col-lg-4.col-md-4.col-sm-4.col-xs-6.filter.mirror
+                                    img.img-responsive(src='/images/Фотки на дверки/Дзеркало 5.png')
+                                .gallery_product.col-lg-4.col-md-4.col-sm-4.col-xs-6.filter.mirror
+                                    img.img-responsive(src='/images/Фотки на дверки/Дзеркало 6.png')
+                                .gallery_product.col-lg-4.col-md-4.col-sm-4.col-xs-6.filter.photoprinting
+                                    img.img-responsive(src='/images/Фотки на дверки/Фотодрук 1.png')
+                                .gallery_product.col-lg-4.col-md-4.col-sm-4.col-xs-6.filter.photoprinting
+                                    img.img-responsive(src='/images/Фотки на дверки/Фотодрук 2.png')
+                                .gallery_product.col-lg-4.col-md-4.col-sm-4.col-xs-6.filter.photoprinting
+                                    img.img-responsive(src='/images/Фотки на дверки/Фотодрук 3.png')
+                                .gallery_product.col-lg-4.col-md-4.col-sm-4.col-xs-6.filter.photoprinting
+                                    img.img-responsive(src='/images/Фотки на дверки/Фотодрук 4.png')
+                                .gallery_product.col-lg-4.col-md-4.col-sm-4.col-xs-6.filter.photoprinting
+                                    img.img-responsive(src='/images/Фотки на дверки/Фотодрук 5.png')
+                                .gallery_product.col-lg-4.col-md-4.col-sm-4.col-xs-6.filter.photoprinting
+                                    img.img-responsive(src='/images/Фотки на дверки/Фотодрук 6.png')
+                                .gallery_product.col-lg-4.col-md-4.col-sm-4.col-xs-6.filter.matting
+                                    img.img-responsive(src='/images/Фотки на дверки/Матування 1.png')
+                                .gallery_product.col-lg-4.col-md-4.col-sm-4.col-xs-6.filter.matting
+                                    img.img-responsive(src='/images/Фотки на дверки/Матування 2.png')
+                                .gallery_product.col-lg-4.col-md-4.col-sm-4.col-xs-6.filter.matting
+                                    img.img-responsive(src='/images/Фотки на дверки/Матування 3.png')
+                                .gallery_product.col-lg-4.col-md-4.col-sm-4.col-xs-6.filter.matting
+                                    img.img-responsive(src='/images/Фотки на дверки/Матування 4.png')
+                                .gallery_product.col-lg-4.col-md-4.col-sm-4.col-xs-6.filter.matting
+                                    img.img-responsive(src='/images/Фотки на дверки/Матування 5.png')
+                                .gallery_product.col-lg-4.col-md-4.col-sm-4.col-xs-6.filter.matting
+                                    img.img-responsive(src='/images/Фотки на дверки/Матування 6.png')
+                                .gallery_product.col-lg-4.col-md-4.col-sm-4.col-xs-6.filter.lakobel
+                                    img.img-responsive(src='/images/Фотки на дверки/Лакобель 1.png')
+                                .gallery_product.col-lg-4.col-md-4.col-sm-4.col-xs-6.filter.lakobel
+                                    img.img-responsive(src='/images/Фотки на дверки/Лакобель 2.png')
+                                .gallery_product.col-lg-4.col-md-4.col-sm-4.col-xs-6.filter.lakobel
+                                    img.img-responsive(src='/images/Фотки на дверки/Лакобель 3.png')
+                                .gallery_product.col-lg-4.col-md-4.col-sm-4.col-xs-6.filter.lakobel
+                                    img.img-responsive(src='/images/Фотки на дверки/Лакобель 4.png')
+                                .gallery_product.col-lg-4.col-md-4.col-sm-4.col-xs-6.filter.lakobel
+                                    img.img-responsive(src='/images/Фотки на дверки/Лакобель 5.png')
+                                .gallery_product.col-lg-4.col-md-4.col-sm-4.col-xs-6.filter.lakobel
+                                    img.img-responsive(src='/images/Фотки на дверки/Лакобель 6.png')
+                        .col-sm-1
+                .col-sm-12.contentIndex.mainContent(style="margin-top: 30px;")
+                    h3
+                        .col-sm-1.text-right
+                            span.group-addon.index 4
+                        .col-sm-11.text-left.padLeft
+                            span.group-addon.text ЗВІТ ЗАМОВЛЕННЯ
+                .col-sm-12
+                    .col-sm-1
+                    .col-sm-11.text-left.padLeft
+                        .col-sm-11.padLeft.chooseSystem.bigGalery
+                            label.col-sm-12 Перевірте коректність даних, які Ви ввели
+                            #resultList.col-sm-11.text-center.result
+                                .galery_item.col-sm-6.text-left.firstCol
+                                    .galery_item-describe
+                                        .col-sm-6
+                                            label.resultFirstCol Висота y:
+                                        .col-sm-6
+                                            label#heightY.resultSecondCol 2900
+                                    .galery_item-describe
+                                        .col-sm-6
+                                            label.resultFirstCol Ширина x:
+                                        .col-sm-6
+                                            label#widthX.resultSecondCol 5500
+                                    .galery_item-describe
+                                        .col-sm-6
+                                            label.resultFirstCol Кількість дверей:
+                                        .col-sm-6
+                                            label#resultAmountDors.resultSecondCol 6
+                                    .galery_item-describe
+                                        .col-sm-6
+                                            label.resultFirstCol Розмір однієї дверки:
+                                        .col-sm-6
+                                            label#resultOneSizeDor.resultSecondCol 2900 х 916
+                                    .galery_item-describe
+                                        .col-sm-6
+                                            label.resultFirstCol Тип системи:
+                                        .col-sm-6
+                                            label#resultTypeSystem.resultSecondCol Стандарт (сталь)
+                                    .galery_item-describe
+                                        .col-sm-6
+                                            label.resultFirstCol Колір профілю:
+                                        .col-sm-6
+                                            label#resultColorSystem.resultSecondCol Золото
+                                    .galery_item-describe
+                                        .col-sm-6
+                                            label.resultFirstCol Форма профілю:
+                                        .col-sm-6
+                                            label#resultProfile.resultSecondCol Квадро
+                                .galery_item.col-sm-6.secondCol
+                                    .galery_item-describe.Dor1
+                                        .col-sm-6.text-right
+                                            label.resultFirstCol Дверка 1: 
+                                        .col-sm-6.text-left
+                                            label#resultDor1.resultSecondCol Матування
+                                    .galery_item-describe.Dor2
+                                        .col-sm-6.text-right
+                                            label.resultFirstCol Дверка 2: 
+                                        .col-sm-6.text-left
+                                            label#resultDor2.resultSecondCol Матування
+                                    .galery_item-describe.Dor3
+                                        .col-sm-6.text-right
+                                            label.resultFirstCol Дверка 3: 
+                                        .col-sm-6.text-left
+                                            label#resultDor3.resultSecondCol Матування
+                                    .galery_item-describe.Dor4
+                                        .col-sm-6.text-right
+                                            label.resultFirstCol Дверка 4: 
+                                        .col-sm-6.text-left
+                                            label#resultDor4.resultSecondCol Матування
+                                    .galery_item-describe.Dor5
+                                        .col-sm-6.text-right
+                                            label.resultFirstCol Дверка 5: 
+                                        .col-sm-6.text-left
+                                            label#resultDor5.resultSecondCol Матування
+                                    .galery_item-describe.Dor6
+                                        .col-sm-6.text-right
+                                            label.resultFirstCol Дверка 6: 
+                                        .col-sm-6.text-left
+                                            label#resultDor6.resultSecondCol Матування
+                            .col-sm-10.text-center.amount
+                                .galery_item.col-sm-12.text-center
+                                    .galery_item-describe
+                                        h3 До оплати : 
+                                            a#lastAmount 161673 грн
+                            label#beforeOrder.col-sm-12
+                                |Для того, щоб зробити замовлення натисніть кнопку «Замовити», 
+                                br 
+                                |в найближчому часі з Вами зв'яжуться.
+                            
+                            label#afterOrder.col-sm-12(style="margin-top: 10px ;") В найближчому часі з Вами зв'яжуться.
+                            button#orderInBD.btn.btn-info.col-sm-4.btn-lg.order(href="/order") Замовити
+                                        
+            .col-sm-2
+    include footer
+    script(src="/javascripts/script.js")
+        

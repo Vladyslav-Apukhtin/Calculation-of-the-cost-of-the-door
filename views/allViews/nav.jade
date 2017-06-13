@@ -1,0 +1,64 @@
+nav(class="navbar navbar-inverse" style="border-radius: 0;")
+    div(class="container-fluid navReg", style="height: 42px;")
+        //- .alert.alert-danger.navbar-header.navbar-left.col.sm-1
+        //-     strong Error login or password!
+        div(class="navbar-header navbar-right" style="margin-right: -10px;")
+            if reg.user === undefined
+                form(id="login" class ="nav navbar-nav navbar-right form-inline signInform text-right" action="/login" method="post")
+                    if reg.err === 'loginError'
+                        div.input-group.col-xs-4.has-error.has-feedback.errorLogin
+                            span.input-group-addon.colorInput
+                                i.glyphicon.glyphicon-user
+                            input#login.form-control(type='text', name='Login', placeholder='Login')
+                            span.glyphicon.glyphicon-remove.form-control-feedback.erroricon(aria-hidden='true')
+                            span#inputError2Status.sr-only (error)
+                        div(class="input-group col-xs-4").has-error.has-feedback.errorLogin
+                            span.input-group-addon.colorInput
+                                i.glyphicon.glyphicon-lock
+                            input#password.form-control(type='password', name='password', placeholder='Password')
+                            span.glyphicon.glyphicon-remove.form-control-feedback.erroricon(aria-hidden='true')
+                            span#inputError2Status.sr-only (error)
+                        button(id='login', type="submit", class="btn selectButton") Вхід
+                    else
+                        div.input-group.col-xs-4
+                            span.input-group-addon.colorInput
+                                i.glyphicon.glyphicon-user
+                            input#login.form-control(type='text', name='Login', placeholder='Login')
+                        div(class="input-group col-xs-4")
+                            span.input-group-addon.colorInput
+                                i.glyphicon.glyphicon-lock
+                            input#password.form-control(type='password', name='password', placeholder='Password')
+                        button(id='login', type="submit", class="btn selectButton") Вхід
+            else
+                ul(class="nav navbar-nav navbar-right")
+                    li
+                        button(id='couple', onClick='location.href="/registration"' class="btn selectButton", style="margin-top: 5px;") Вихід
+    div(class="collapse navbar-collapse navbarComponent" id="myNavbar")
+        ul(class="nav navbar-nav")
+            li
+                a.disabledUrl(href="#" disabled) Головна
+            li
+                a.disabledUrl(href="#" disabled) Про нас
+            li
+                if reg.url == 'cataloges'
+                    a(href="/cataloges", style="text-decoration: underline;") Каталоги
+                else 
+                    a.disabledUrl(href="#" disabled) Каталоги
+            if reg.url == 'calculator'
+                li 
+                    a(href="/calculator", style="text-decoration: underline;") Калькулятор
+            else if reg.url == 'cataloges'
+                li.disabledUrl 
+                    a.disabledUrl(href="#", style="text-decoration: none;" disabled) Калькулятор
+            else
+                li 
+                    a(href="/registration") Калькулятор
+    div(class="collapse navbar-collapse navReg")
+        div(class="navbar-header navbar-right")
+            ul(class="nav navbar-nav navbar-right")
+                if reg.user === undefined
+                    li(style="text-decoration: underline;")
+                        a(href="/registration") Реєстрація
+                else 
+                    li
+                        a#userLogin.login Привіт, #{reg.user.LOGIN}

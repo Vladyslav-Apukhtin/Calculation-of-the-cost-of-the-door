@@ -1,0 +1,50 @@
+extends ./../index.jade
+
+block mainRegistrationForm
+    include nav
+    .container-fluid.text-center    
+        .row.content
+            .col-sm-2
+            .col-sm-8.colRegForm.mainContent
+                h3 
+                    p 
+                        |Для реєстрації заповніть запропоновані поля
+                        br
+                        |та натисніть кнопку «Зареєструватися»
+                br
+                br
+                if reg.err === 'error'
+                    .alert.alert-danger
+                        strong Error login!
+                        |  Такий Login вже існує.
+                .container-fluid.text-center    
+                    .row.content
+                        .col-sm-3
+                        .col-sm-6.regForm
+                            form(id='regForm' class="form-horizontal" name='regForm' 
+                                action="/authorization" method="post")
+                                label Реєстрація
+                                .input-group
+                                    span.input-group-addon Прізвище Ім'я:
+                                    input.form-control(id="surnameName" type="text" name="surnameName" placeholder="Прізвище Ім'я" maxlength="80" pattern="^[\s-A-Za-zА-Яа-яЁё'`]+$" required)
+                                br
+                                .input-group
+                                    span.input-group-addon Логін:
+                                    input.form-control(id="login" type="text" name="login" placeholder="Логін" maxlength="30" pattern="^[-A-Za-zА-Яа-яЁё0-9\u0410-\u044F`]+$" required)
+                                br
+                                .input-group
+                                    span.input-group-addon Пароль:
+                                    input.form-control(id="password" type="password" name="password" placeholder="Пароль" pattern="^[-a-zA-Z0-9]+$" required)
+                                br
+                                .input-group
+                                    span.input-group-addon Номер телефону:
+                                    input.form-control(id="telNumber" type="text" name="telNumber" placeholder="+38000000000" pattern="[+]{1}[0-9]{12}" title="Формат вводу +38000000000" required)
+                                br
+                                .input-group
+                                    span.input-group-addon E-mail:
+                                    input.form-control(id="email" type="email" name="email" placeholder="E-mail" title="Формат вводу example@email.com" required)
+                                br
+                                button.selectButton(id='regForm', type="submit") Зареєструватися
+                        .col-sm-3
+            .col-sm-2
+    include footer

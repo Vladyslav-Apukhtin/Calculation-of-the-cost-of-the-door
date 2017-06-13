@@ -1,0 +1,62 @@
+extends ./../index.jade
+
+block cataloges
+    include nav
+    .container-fluid.text-left    
+        .row.content
+            .col-sm-2
+            .col-sm-8.colRegForm.mainContent.contentCalculator
+                .col-sm-12
+                    .col-sm-1
+                    .col-sm-11.text-left.padLeft
+                        .col-sm-11.padLeft.chooseSystem.bigGalery.lastElementInBigGalery
+                            each val, index in reg    
+                                label.col-sm-12 Фамілія Ім'я: #{val.SURNAMENAME}, Телефон: #{val.TELNUMBER}, E-mail: #{val.E_MAIL} 
+                                #resultList.col-sm-11.text-center.result
+                                    .galery_item.col-sm-6.text-left.firstCol
+                                        .galery_item-describe
+                                            .col-sm-6
+                                                label.resultFirstCol Висота y:
+                                            .col-sm-6
+                                                label#heightY.resultSecondCol #{val.HEIGHT}
+                                        .galery_item-describe
+                                            .col-sm-6
+                                                label.resultFirstCol Ширина x:
+                                            .col-sm-6
+                                                label#widthX.resultSecondCol #{val.WIDTH}
+                                        .galery_item-describe
+                                            .col-sm-6
+                                                label.resultFirstCol Кількість дверей:
+                                            .col-sm-6
+                                                label#resultAmountDors.resultSecondCol #{val.AMOUNT}
+                                        .galery_item-describe
+                                            .col-sm-6
+                                                label.resultFirstCol Розмір однієї дверки:
+                                            .col-sm-6
+                                                label#resultOneSizeDor.resultSecondCol #{val.SIZE}
+                                        .galery_item-describe
+                                            .col-sm-6
+                                                label.resultFirstCol Тип системи:
+                                            .col-sm-6
+                                                label#resultTypeSystem.resultSecondCol #{val.TYPE}
+                                        .galery_item-describe
+                                            .col-sm-6
+                                                label.resultFirstCol Колір профілю:
+                                            .col-sm-6
+                                                label#resultColorSystem.resultSecondCol #{val.COLOR}
+                                        .galery_item-describe
+                                            .col-sm-6
+                                                label.resultFirstCol Форма профілю:
+                                            .col-sm-6
+                                                label#resultProfile.resultSecondCol #{val.FORM}
+                                    .galery_item.col-sm-6.secondCol
+                                        -var i = 1;
+                                        while i <= val.AMOUNT
+                                            .galery_item-describe
+                                                .col-sm-6.text-right
+                                                    label.resultFirstCol Дверка #{i}: 
+                                                .col-sm-6.text-left
+                                                    label.resultSecondCol #{val[`DOR${i}`]}
+                                            -i++;
+            .col-sm-2
+    include footer
