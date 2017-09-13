@@ -1,16 +1,12 @@
-var path = require('path');
+const path = require('path');
 
-const options = {
+module.exports = {
 	host: '127.0.0.1',
-	database: 'D:/test/work/diplom_2017/db/change/USERSORDERS.FDB',
+	database: `${path.dirname(__dirname).split(path.sep).join('/')}/db/change/USERSORDERS.FDB`,
 	port: 3050,
 	user: 'SYSDBA',
 	password: 'masterkey',
-	lowercase_keys: false, // set to true to lowercase keys
-	role: null,			   // default
-	pageSize: 4096		   // default when creating database
-};
-
-module.exports = {
-	options: options
+	lowercase_keys: false,
+	role: null,
+	pageSize: 4096
 } 
