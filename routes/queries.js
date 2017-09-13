@@ -1,9 +1,8 @@
 const Firebird = require('node-firebird');
-const Promise = require('bluebird');
-const dbOptions = require('./dbOptions.js');
-var db;
+const Promise = require('bluebird'); 
+let db;
 
-const options = dbOptions.options;
+const options = require('./dbOptions.js');
 
 
 /*------------------------------ UTILITY -------------------------------*/
@@ -24,7 +23,7 @@ connectToDB = dboptions => {
     return def.promise;	
 }
 
-function disconnectFromDB() {
+disconnectFromDB = () => {
 	db.detach(() => {console.log('DATABASE DETACHED')});
 };
 

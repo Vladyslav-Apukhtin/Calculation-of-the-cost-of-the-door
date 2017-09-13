@@ -2,10 +2,10 @@ extends ./../index.jade
 
 block calculator
     include nav
-    .container-fluid.text-left    
-        .row.content
+    .container-fluid.text-left.calcConent    
+        .row.content.calcConent
             .col-sm-2
-            .col-sm-8.colRegForm.mainContent.contentCalculator
+            .col-sm-8.colRegForm.mainContent.contentCalculator.calcConent
                 .col-sm-12
                     .col-sm-1
                     .col-sm-11.text-left.padLeft
@@ -21,6 +21,15 @@ block calculator
                 .col-sm-12
                     .col-sm-1
                     .col-sm-11.text-left.padLeft
+                        #doorsShow.col-sm-7.text-left.imgStyle
+                            .content
+                                .col-sm-2.lineHeight
+                                    .col-sm-12 Висота 
+                                .col-sm-1
+                                    hr
+                                #allDoors.col-sm-9
+                                .col-sm-12.lineWidth
+                                    .col-sm-12 Ширина
                         .col-sm-5.padLeft.amountDors
                             form.form-horizontal(id='amountDors' name='amountDors' action="/" method="post")
                                 label Введіть розмір у міліметрах
@@ -40,8 +49,6 @@ block calculator
                                     span.input-group-addon Кількість дверей:
                                     input.form-control(id="amountInputDors" type="number" name="amountInputDors" placeholder="max 6 шт" max="6" min="1" maxlength="1" pattern="^[0-9]+$" required)
                                     span.input-group-addon.end шт
-                        .col-sm-7.text-left.imgStyle
-                            img.img-responsive(src='/images/wH.png' alt="Width and Height doors")
                 .col-sm-12.contentIndex.mainContent(style="margin-top: 30px;")
                     h3
                         .col-sm-1.text-right
@@ -273,7 +280,7 @@ block calculator
                                 .gallery_product.col-lg-4.col-md-4.col-sm-4.col-xs-6.filter.lakobel
                                     img.img-responsive(src='/images/Фотки на дверки/Лакобель 6.png')
                         .col-sm-1
-                .col-sm-12.contentIndex.mainContent(style="margin-top: 30px;")
+                .col-sm-12.contentIndex.mainContent.blockOrderReport(style="margin-top: 30px;")
                     h3
                         .col-sm-1.text-right
                             span.group-addon.index 4
@@ -355,14 +362,14 @@ block calculator
                             .col-sm-10.text-center.amount
                                 .galery_item.col-sm-12.text-center
                                     .galery_item-describe
-                                        h3 До оплати : 
+                                        h3#blockWithPrice До оплати : 
                                             a#lastAmount 161673 грн
                             label#beforeOrder.col-sm-12
                                 |Для того, щоб зробити замовлення натисніть кнопку «Замовити», 
                                 br 
                                 |в найближчому часі з Вами зв'яжуться.
                             
-                            label#afterOrder.col-sm-12(style="margin-top: 10px ;") В найближчому часі з Вами зв'яжуться.
+                            label#afterOrder.col-sm-12(style="margin-top: 10px ;") Дякуемо за замовлення. В найближчому часі з Вами зв'яжуться.
                             button#orderInBD.btn.btn-info.col-sm-4.btn-lg.order(href="/order") Замовити
                                         
             .col-sm-2

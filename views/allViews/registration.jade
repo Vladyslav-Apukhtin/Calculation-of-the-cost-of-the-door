@@ -2,10 +2,10 @@ extends ./../index.jade
 
 block mainRegistrationForm
     include nav
-    .container-fluid.text-center    
-        .row.content
+    .container-fluid.text-center.regContent    
+        .row.content.regContent
             .col-sm-2
-            .col-sm-8.colRegForm.mainContent
+            .col-sm-8.colRegForm.mainContent.regContent
                 h3 
                     p 
                         |Для реєстрації заповніть запропоновані поля
@@ -48,3 +48,4 @@ block mainRegistrationForm
                         .col-sm-3
             .col-sm-2
     include footer
+    script(src="/javascripts/registration.js")
